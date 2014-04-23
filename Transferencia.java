@@ -6,10 +6,7 @@
 
 package sccsimulator;
 
-/**
- *
- * @author Tomas
- */
+
 public class Transferencia extends Evento
 {
     protected int servico;
@@ -25,11 +22,16 @@ public class Transferencia extends Evento
     @Override
     void executa()
     {
-        Servico serv = s.getServico(this.servico);
         Servico prev = s.getServico(this.servico - 1);
+        Servico serv = s.getServico(this.servico);        
         
         prev.removeServico();
         serv.insereServico(this.c);
         
+    }
+    
+    @Override
+    public String toString(){
+         return "Transferência em " + instante;
     }
 }

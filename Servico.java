@@ -14,6 +14,8 @@ public class Servico {
     private double media;
     private double desvio;
     private int seed;
+    private int nextRand;
+    private double[] randNum = new double[2];
 
     // Construtor
     Servico (Simulador s, int servico, double media, double desvio, int seed){
@@ -28,6 +30,9 @@ public class Servico {
         this.media = media;
         this.desvio = desvio;
         this.seed = seed;
+        this.randNum = Aleatorio.normal(this.media, this.desvio, this.seed);
+        this.nextRand = 1;
+        
     }
 
     // Método que insere cliente (c) no serviço
@@ -35,17 +40,24 @@ public class Servico {
         if (estado == 0) {  // Se serviço livre,
             estado ++;      // fica ocupado e
                             // agenda saída do cliente c para daqui a s.getMedia_serv() instantes
-            
+            if(this.nextRand < 0)
+            {
+                this.randNum = Aleatorio.normal(this.media, this.desvio, this.seed);
+                this.nextRand = 1;
+            }
             switch(this.servico)
             {
-                case 1:
-                    this.s.insereEvento(new Transferencia(this.s.getInstante() + Aleatorio.normal(this.media, this.desvio, this.seed), this.s, this.servico + 1, c));
+                case 1:                    
+                    this.s.insereEvento(new Transferencia(this.s.getInstante() + randNum[this.nextRand], this.s, this.servico + 1, c));
+                    nextRand--;
                     break;
                 case 2:
-                    this.s.insereEvento(new Transferencia(this.s.getInstante() + Aleatorio.normal(this.media, this.desvio, this.seed), this.s, this.servico + 1, c));
+                    this.s.insereEvento(new Transferencia(this.s.getInstante() + randNum[this.nextRand], this.s, this.servico + 1, c));
+                    nextRand--;
                     break;
                 case 3:
-                    this.s.insereEvento(new Saida(this.s.getInstante() + Aleatorio.normal(this.media, this.desvio, this.seed), this.s, this.servico));
+                    this.s.insereEvento(new Saida(this.s.getInstante() + randNum[this.nextRand], this.s, this.servico));
+                    nextRand--;
                     break;
             }
         }   
@@ -63,17 +75,26 @@ public class Servico {
             Cliente c = (Cliente)fila.firstElement();
             fila.removeElementAt(0);
             
+            if(this.nextRand < 0)
+            {
+                randNum = Aleatorio.normal(this.media, this.desvio, this.seed);
+                this.nextRand = 1;
+            }
+            
             switch(this.servico)
             {
                 case 1:
-                    this.s.insereEvento(new Transferencia(this.s.getInstante() + this.s.getMedia_serv(this.servico), this.s, this.servico + 1, c));
+                    this.s.insereEvento(new Transferencia(this.s.getInstante() + this.randNum[nextRand], this.s, this.servico + 1, c));
+                    nextRand--;
                     break;
                 case 2:
-                    this.s.insereEvento(new Transferencia(this.s.getInstante() + this.s.getMedia_serv(this.servico), this.s, this.servico + 1, c));
+                    this.s.insereEvento(new Transferencia(this.s.getInstante() + this.randNum[nextRand], this.s, this.servico + 1, c));
+                    nextRand--;
                     break;
                 case 3:
                     // agenda a sua saida para daqui a s.getMedia_serv() instantes
-                    this.s.insereEvento (new Saida(s.getInstante()+s.getMedia_serv(this.servico),s, 3));
+                    this.s.insereEvento (new Saida(s.getInstante() + this.randNum[nextRand],s, 3));
+                    nextRand--;
                     break;                    
             }
             
@@ -116,6 +137,11 @@ public class Servico {
     // Método que devolve o número de clientes atendidos no serviço até ao momento
     public int getAtendidos() {
         return atendidos;
+    }
+    
+    public int getSeed()
+    {
+        return this.seed;
     }
 
 }
