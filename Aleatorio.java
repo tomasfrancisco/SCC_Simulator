@@ -1,13 +1,13 @@
 package sccsimulator;
 
-// Classe para geração de n�meros aleat�rios segundos v�rias distribui��es
-// Apenas a distribui��o exponencial negativa est� definida
+// Classe para geração de números aleatórios segundos várias distribuições
+// Apenas a distribuição exponencial negativa está definida
 
 public class Aleatorio {
 
 	// Gera um n�mero segundo uma distribuição exponencial negativa de m�dia m
-    static double exponencial (double m){
-		return (-m*Math.log(Math.random()));
+    static double exponencial (double m, int seed){
+		return (-m*Math.log(RandomGenerator.rand64(seed)));
 	}
 
     static double[] normal(double media, double desvio, int seed)

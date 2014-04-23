@@ -20,7 +20,7 @@ public class Chegada extends Evento {
         // Coloca cliente no serviço - na fila ou a ser atendido, conforme o caso
         serv.insereServico (new Cliente());
         // Agenda nova chegada para daqui a Aleatorio.exponencial(s.media_cheg) instantes
-        s.insereEvento(new Chegada(this.s.getInstante() + Aleatorio.exponencial(this.s.getMedia_cheg()), this.s, 1));
+        s.insereEvento(new Chegada(this.s.getInstante() + Aleatorio.exponencial(this.s.getMedia_cheg(), serv.getSeed()), this.s, 1));
     }
 
     // Método que descreve o evento.

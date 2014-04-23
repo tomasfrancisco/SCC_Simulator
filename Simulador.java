@@ -12,9 +12,9 @@ public class Simulador
     private double desvio_fix;
     private double media_test;
     private double desvio_test;
-    private double seed_prep;
-    private double seed_fix;
-    private double seed_test;
+    private int seed_prep;
+    private int seed_fix;
+    private int seed_test;
     // Tempo de Simulação
     private double tSimulacao;
     // Serviço - pode haver mais do que um num simulador
@@ -53,7 +53,8 @@ public class Simulador
     }
 
     // programa principal
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         // Cria um simulador e
         Simulador s = new Simulador();
         // põe-o em marcha
