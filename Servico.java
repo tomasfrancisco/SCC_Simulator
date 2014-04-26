@@ -11,6 +11,7 @@ public class Servico {
     private Vector<Cliente> fila; // Fila de espera do serviço
     private Simulador s; // Referência para o simulador a que pertence o serviço
     private int servico;
+    private int atendedores;
     private double media;
     private double desvio;
     private int seed;
@@ -18,7 +19,7 @@ public class Servico {
     private double[] randNum = new double[2];
 
     // Construtor
-    Servico (Simulador s, int servico, double media, double desvio, int seed){
+    Servico (Simulador s, int servico, int atendedores, double media, double desvio, int seed){
     	this.s = s;
         fila = new Vector <Cliente>(); // Cria fila de espera
         estado = 0; // Livre
@@ -27,6 +28,7 @@ public class Servico {
         soma_temp_esp = 0;
         soma_temp_serv = 0;
         this.servico = servico;
+        this.atendedores = atendedores;
         this.media = media;
         this.desvio = desvio;
         this.seed = seed;
@@ -36,10 +38,11 @@ public class Servico {
     }
 
     // Método que insere cliente (c) no serviço
-    public void insereServico (Cliente c){
-        if (estado == 0) {  // Se serviço livre,
-            estado ++;      // fica ocupado e
-                            // agenda saída do cliente c para daqui a s.getMedia_serv() instantes
+    public void insereServico (Cliente c)
+    {        
+        if (getEstado()) {          // Se serviço livre,
+            setMaisEstado();        // fica ocupado e
+                                    // agenda saída do cliente c para daqui a s.getMedia_serv() instantes
             if(this.nextRand < 0)
             {
                 this.randNum = Aleatorio.normal(this.media, this.desvio, this.seed);
@@ -60,6 +63,7 @@ public class Servico {
                     nextRand--;
                     break;
             }
+            
         }   
         else fila.addElement(c); // Se serviço ocupado, o cliente vai para a fila de espera
     }
@@ -68,7 +72,7 @@ public class Servico {
     public void removeServico (){
         atendidos++; // Regista que acabou de atender + 1 cliente
         if (fila.size()== 0) 
-            estado --; // Se a fila está vazia, liberta o serviço
+            setMenosEstado(); // Se a fila está vazia, liberta o serviço
         else 
         {   // Se não,
             // vai buscar próximo cliente à fila de espera e
@@ -115,7 +119,7 @@ public class Servico {
     }
 
 	// Método que calcula valores finais estatísticos
-    public void relat ()
+    public String relat ()
     {
         // Tempo médio de espera na fila
         double temp_med_fila = soma_temp_esp / (atendidos+fila.size());
@@ -126,12 +130,20 @@ public class Servico {
         // Tempo médio de atendimento no serviço
         double utilizacao_serv = soma_temp_serv / s.getInstante();
         // Apresenta resultados
-        System.out.println("Tempo médio de espera "+temp_med_fila);
-        System.out.println("Comp. médio da fila "+comp_med_fila);
-        System.out.println("Utilização do serviço "+utilizacao_serv);
-        System.out.println("Tempo de simulação "+s.getInstante()); // Valor actual
-        System.out.println("Número de clientes atendidos "+atendidos);
-        System.out.println("Número de clientes na fila "+fila.size()); // Valor actual
+        String final_text = "\nTempo médio de espera "+temp_med_fila
+                +"\nComp. médio da fila "+comp_med_fila
+                +"\nUtilização do serviço "+utilizacao_serv
+                +"\nTempo de simulação "+s.getInstante()
+                +"\nNúmero de clientes atendidos "+atendidos
+                +"\nNúmero de clientes na fila "+fila.size();
+        return final_text;
+        
+//        System.out.println("Tempo médio de espera "+temp_med_fila);
+//        System.out.println("Comp. médio da fila "+comp_med_fila);
+//        System.out.println("Utilização do serviço "+utilizacao_serv);
+//        System.out.println("Tempo de simulação "+s.getInstante()); // Valor actual
+//        System.out.println("Número de clientes atendidos "+atendidos);
+//        System.out.println("Número de clientes na fila "+fila.size()); // Valor actual
     }
 
     // Método que devolve o número de clientes atendidos no serviço até ao momento
@@ -144,4 +156,22 @@ public class Servico {
         return this.seed;
     }
 
+    public void setMaisEstado()
+    {
+        this.estado++;
+    }
+    
+    public void setMenosEstado()
+    {
+        this.estado--;
+    }
+    
+    public boolean getEstado()
+    {
+        if(this.estado < this.atendedores)
+            return true;
+        else
+            return false;
+    }
+    
 }

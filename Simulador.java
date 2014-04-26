@@ -15,6 +15,9 @@ public class Simulador
     private int seed_prep;
     private int seed_fix;
     private int seed_test;
+    private int atend_prep;
+    private int atend_fix;
+    private int atend_test;
     // Tempo de Simulação
     private double tSimulacao;
     // Serviço - pode haver mais do que um num simulador
@@ -26,39 +29,39 @@ public class Simulador
     private ListaEventos lista;
 
     // Construtor
-    public Simulador() {
+    public Simulador(double media_cheg, double media_prep, double desvio_prep, int seed_prep, int atend_prep, double media_fix, double desvio_fix, int seed_fix, int atend_fix, double media_test, double desvio_test, int seed_test, int atend_test, int tSimulacao) 
+    {
         // Inicialização de parâmetros do simulador
-        media_cheg = 1;
-        media_prep = 6;
-        desvio_prep = 1.5;
-        seed_prep = 20;
-        media_fix = 5;
-        desvio_fix = 1.3;
-        seed_fix = 25;
-        media_test = 4.5;
-        desvio_test = 1.1;
-        seed_test = 30;
-        tSimulacao = 50 * 60;
+        this.media_cheg = media_cheg;
+        
+        this.media_prep = media_prep;        
+        this.desvio_prep = desvio_prep;
+        this.seed_prep = seed_prep;
+        this.atend_prep = atend_prep;
+        
+        
+        this.media_fix = media_fix;
+        this.desvio_fix = desvio_fix;
+        this.seed_fix = seed_fix;
+        this.atend_fix = atend_fix;
+        
+        this.media_test = media_test;
+        this.desvio_test = desvio_test;
+        this.seed_test = seed_test;
+        this.atend_test = atend_test;
+        
+        this.tSimulacao = tSimulacao * 60;
         // Inicialização do relógio de simulação
         instante = 0;
         // Criação do serviço
-        preparacao = new Servico(this, 1, media_prep, desvio_prep, seed_prep);
-        fixacao = new Servico(this, 2, media_fix, desvio_fix, seed_fix);
-        teste = new Servico(this, 3, media_test, desvio_test, seed_test);
+        preparacao = new Servico(this, 1, atend_prep, media_prep, desvio_prep, seed_prep);
+        fixacao = new Servico(this, 2, atend_fix, media_fix, desvio_fix, seed_fix);
+        teste = new Servico(this, 3, atend_test, media_test, desvio_test, seed_test);
         // Criação da lista de eventos
         lista = new ListaEventos(this);
         // Agendamento da primeira chegada
         // Se não for feito, o simulador não tem eventos para simular
         insereEvento (new Chegada(instante, this, 1));
-    }
-
-    // programa principal
-    public static void main(String[] args) 
-    {
-        // Cria um simulador e
-        Simulador s = new Simulador();
-        // põe-o em marcha
-        s.executa();
     }
 
     // Método que insere o evento e1 na lista de eventos
@@ -74,19 +77,15 @@ public class Simulador
     }
 
     // Método que apresenta os resultados de simula��o finais
-    private void relat (){
-        System.out.println();
-        System.out.println("------- Resultados preparacao -------");
-        System.out.println();
-        preparacao.relat();
-        System.out.println();
-        System.out.println("------- Resultados fixacao -------");
-        System.out.println();
-        fixacao.relat();
-        System.out.println();
-        System.out.println("------- Resultados teste -------");
-        System.out.println();
-        teste.relat();
+    public String relat (){
+        String final_text = "\n------- Resultados preparacao -------\n"
+                +preparacao.relat()
+                +"\n------- Resultados fixacao -------\n"
+                +fixacao.relat()
+                +"\n------- Resultados teste -------\n"
+                +teste.relat();
+        
+        return final_text;
     }
 
     // Método executivo do simulador
@@ -95,13 +94,12 @@ public class Simulador
         // Enquanto não atender todos os clientes
         while (this.instante < this.tSimulacao)
         {
-            //lista.print();                       // Mostra lista de eventos - desnecessário; é apenas informativo
+            //lista.print();                        // Mostra lista de eventos - desnecessário; é apenas informativo
             e1 = (Evento)(lista.removeFirst());  // Retira primeiro evento (é o mais iminente) da lista de eventos
             instante = e1.getInstante();         // Actualiza relógio de simulação
             act_stats();                         // Actualiza valores estatísticos
             e1.executa();                        // Executa evento
         }
-        relat();  // Apresenta resultados de simulação finais
     }
 
     // Método que devolve o instante de simulação corrente
@@ -142,4 +140,9 @@ public class Simulador
         }
         return null;
     }
+    
+    
+        
+    
+            
 }
