@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 public class GUI extends javax.swing.JFrame {
 
     private Simulador s;
+    private int counter = 0;
     /**
      * Creates new form GUI
      * @param s
@@ -350,8 +351,8 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(desvio_fix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel10))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -454,6 +455,7 @@ public class GUI extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void media_prepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_media_prepActionPerformed
@@ -493,6 +495,9 @@ public class GUI extends javax.swing.JFrame {
         
         String[] info = new String[2];
         info[0] = s.relat();
+        
+        this.counter++;
+        info[1] = ""+this.counter;
         
         Result.main(info);
     }//GEN-LAST:event_SimularActionPerformed
