@@ -51,6 +51,27 @@ public class Simulador
         this.atend_test = atend_test;
         
         this.tSimulacao = tSimulacao * 60;
+        
+//        // Inicialização de parâmetros do simulador
+//        this.media_cheg = 1;
+//        
+//        this.media_prep = 6;        
+//        this.desvio_prep = 1.5;
+//        this.seed_prep = 0;
+//        this.atend_prep = 1;
+//        
+//        
+//        this.media_fix = 5;
+//        this.desvio_fix = 1.3;
+//        this.seed_fix = 1;
+//        this.atend_fix = 1;
+//        
+//        this.media_test = 4.5;
+//        this.desvio_test = 1.1;
+//        this.seed_test = 2;
+//        this.atend_test = 1;
+//        
+//        this.tSimulacao = 50 * 60;
         // Inicialização do relógio de simulação
         instante = 0;
         // Criação do serviço
