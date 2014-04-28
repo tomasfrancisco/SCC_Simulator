@@ -128,7 +128,7 @@ public class Servico {
         // uma vez que a simulação começou em 0 e este método só é chamdo no fim da simulação
         double comp_med_fila = soma_temp_esp / s.getInstante();
         // Tempo médio de atendimento no serviço
-        double utilizacao_serv = soma_temp_serv / s.getInstante();
+        double utilizacao_serv = (soma_temp_serv / s.getInstante()) / this.atendedores;
         // Apresenta resultados
         String final_text = "\nTempo médio de espera "+temp_med_fila
                 +"\nComp. médio da fila "+comp_med_fila
