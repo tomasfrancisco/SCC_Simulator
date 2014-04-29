@@ -562,7 +562,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="tSimulacao">
           <Properties>
-            <Property name="text" type="java.lang.String" value="50"/>
+            <Property name="text" type="java.lang.String" value="40"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="Simular">

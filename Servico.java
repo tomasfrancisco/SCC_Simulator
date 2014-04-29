@@ -88,16 +88,16 @@ public class Servico {
             switch(this.servico)
             {
                 case 1:
-                    this.s.insereEvento(new Transferencia(this.s.getInstante() + this.randNum[nextRand], this.s, this.servico + 1, c));
+                    this.s.insereEvento(new Transferencia(this.s.getInstante() + s.getMedia_serv(servico), this.s, this.servico + 1, c));
                     nextRand--;
                     break;
                 case 2:
-                    this.s.insereEvento(new Transferencia(this.s.getInstante() + this.randNum[nextRand], this.s, this.servico + 1, c));
+                    this.s.insereEvento(new Transferencia(this.s.getInstante() + s.getMedia_serv(servico), this.s, this.servico + 1, c));
                     nextRand--;
                     break;
                 case 3:
                     // agenda a sua saida para daqui a s.getMedia_serv() instantes
-                    this.s.insereEvento (new Saida(s.getInstante() + this.randNum[nextRand],s, 3));
+                    this.s.insereEvento (new Saida(s.getInstante() + s.getMedia_serv(servico),s, 3));
                     nextRand--;
                     break;                    
             }
