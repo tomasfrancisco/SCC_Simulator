@@ -363,7 +363,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel18.setText("Tempo de Simulação:");
 
-        tSimulacao.setText("50");
+        tSimulacao.setText("40");
 
         Simular.setText("Simular");
         Simular.addActionListener(new java.awt.event.ActionListener() {
