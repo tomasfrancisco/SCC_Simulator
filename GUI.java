@@ -541,6 +541,10 @@ public class GUI extends javax.swing.JFrame {
         }
         else
         {
+            seed_prep = (int)(Math.random() * 100);
+            seed_fix = (int)(Math.random() * 100);
+            seed_test = (int)(Math.random() * 100);
+            
             int simulacoes = Integer.parseInt(this.num_replicas.getText());
             for(int i = 0; i < simulacoes; i++)
             {
