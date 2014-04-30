@@ -621,12 +621,24 @@ public class GUI extends javax.swing.JFrame {
                 +"\nNúmero de clientes atendidos "+atendidos_test
                 +"\nNúmero de clientes na fila "+fila_test;
             
-            String final_text = "\n------- Resultados preparacao -------\n"
-                +result_prep
-                +"\n------- Resultados fixacao -------\n"
-                +result_fix
-                +"\n------- Resultados teste -------\n"
-                +result_test;           
+            String final_text;
+            
+            if(!this.atend_test.getText().equals("0"))
+            {
+                final_text = "\n------- Resultados preparacao -------\n"
+                    +result_prep
+                    +"\n\n------- Resultados fixacao -------\n"
+                    +result_fix
+                    +"\n\n------- Resultados teste -------\n"
+                    +result_test;
+            }
+            else
+            {
+                final_text = "\n------- Resultados preparacao -------\n"
+                    +result_prep
+                    +"\n\n------- Resultados fixacao -------\n"
+                    +result_fix;
+            }                
             
             
             String[] info = new String[2];

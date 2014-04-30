@@ -145,13 +145,25 @@ public class Simulador
                 +"\nNúmero de clientes atendidos "+dados_test[4]
                 +"\nNúmero de clientes na fila "+dados_test[5];
         
-        String final_text = "\n------- Resultados preparacao -------\n"
-                +result_prep
-                +"\n------- Resultados fixacao -------\n"
-                +result_fix
-                +"\n------- Resultados teste -------\n"
-                +result_test;
+        String final_text;
         
+        
+        if(teste.atendedores != 0)
+        {
+            final_text = "\n------- Resultados preparacao -------\n"
+                +result_prep
+                +"\n\n------- Resultados fixacao -------\n"
+                +result_fix
+                +"\n\n------- Resultados teste -------\n"
+                +result_test;
+        }
+        else
+        {
+            final_text = "\n------- Resultados preparacao -------\n"
+                +result_prep
+                +"\n\n------- Resultados fixacao -------\n"
+                +result_fix;
+        }   
         
         return final_text;
     }
