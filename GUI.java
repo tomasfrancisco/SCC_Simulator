@@ -551,6 +551,7 @@ public class GUI extends javax.swing.JFrame {
                 s.executa();
                 s.relat();
                 
+                
                 temp_med_fila_prep += this.s.dados_prep[0];
                 comp_med_fila_prep += this.s.dados_prep[1];
                 utilizacao_serv_prep += this.s.dados_prep[2];
@@ -578,21 +579,21 @@ public class GUI extends javax.swing.JFrame {
             comp_med_fila_prep /= simulacoes;
             utilizacao_serv_prep /= simulacoes;
             instante_prep /= simulacoes;
-            atend_prep /= simulacoes;
+            atendidos_prep /= simulacoes;
             fila_prep /= simulacoes;
 
             temp_med_fila_fix /= simulacoes;
             comp_med_fila_fix /= simulacoes;
             utilizacao_serv_fix /= simulacoes;
             instante_fix /= simulacoes;
-            atend_fix /= simulacoes;
+            atendidos_fix /= simulacoes;
             fila_fix /= simulacoes;
 
             temp_med_fila_test /= simulacoes;
             comp_med_fila_test /= simulacoes;
             utilizacao_serv_test /= simulacoes;
             instante_test /= simulacoes;
-            atend_test /= simulacoes;
+            atendidos_test /= simulacoes;
             fila_test /= simulacoes;
             
             String result_prep = "\nTempo médio de espera "+temp_med_fila_prep
