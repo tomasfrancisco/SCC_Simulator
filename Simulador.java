@@ -161,7 +161,7 @@ public class Simulador
         {
             final_text = "\n------- Resultados preparacao -------\n"
                 +result_prep
-                +"\n\n------- Resultados fixacao -------\n"
+                +"\n\n------- Resultados fixacao + teste -------\n"
                 +result_fix;
         }   
         
