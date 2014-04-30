@@ -101,6 +101,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel8.setText("Semente:");
 
+        seed_prep.setMaximum(99);
         seed_prep.setPaintLabels(true);
         seed_prep.setValue(0);
         seed_prep.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -209,6 +210,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel17.setText("Semente:");
 
+        seed_test.setMaximum(99);
         seed_test.setValue(2);
         seed_test.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -298,6 +300,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel13.setText("Semente:");
 
+        seed_fix.setMaximum(99);
         seed_fix.setValue(1);
         seed_fix.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {

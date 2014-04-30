@@ -245,6 +245,7 @@
             </Component>
             <Component class="javax.swing.JSlider" name="seed_prep">
               <Properties>
+                <Property name="maximum" type="int" value="99"/>
                 <Property name="paintLabels" type="boolean" value="true"/>
                 <Property name="value" type="int" value="0"/>
               </Properties>
@@ -403,6 +404,7 @@
             </Component>
             <Component class="javax.swing.JSlider" name="seed_test">
               <Properties>
+                <Property name="maximum" type="int" value="99"/>
                 <Property name="value" type="int" value="2"/>
               </Properties>
               <Events>
@@ -546,6 +548,7 @@
             </Component>
             <Component class="javax.swing.JSlider" name="seed_fix">
               <Properties>
+                <Property name="maximum" type="int" value="99"/>
                 <Property name="value" type="int" value="1"/>
               </Properties>
               <Events>
