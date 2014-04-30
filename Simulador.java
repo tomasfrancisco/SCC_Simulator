@@ -102,11 +102,10 @@ public class Simulador
 
     // Método que apresenta os resultados de simula��o finais
     public String relat ()
-    {        
-                
+    {                        
         this.dados_prep[0] = preparacao.soma_temp_esp / (preparacao.atendidos + preparacao.fila.size());    //temp_med_fila
         this.dados_prep[1] = preparacao.soma_temp_esp / preparacao.soma_temp_esp / this.getInstante();      //comp_med_fila
-        this.dados_prep[2] = preparacao.soma_temp_serv / this.getInstante();                                //utilizacao_serv
+        this.dados_prep[2] = preparacao.soma_temp_serv / this.getInstante() / preparacao.atendedores;                                //utilizacao_serv
         this.dados_prep[3] = this.getInstante();
         this.dados_prep[4] = preparacao.atendidos;
         this.dados_prep[5] = preparacao.fila.size();
@@ -114,13 +113,13 @@ public class Simulador
         String result_prep = "\nTempo médio de espera "+dados_prep[0]
                 +"\nComp. médio da fila "+dados_prep[1]
                 +"\nUtilização do serviço "+dados_prep[2]
-                +"\nTempo de simulação "+this.getInstante()
-                +"\nNúmero de clientes atendidos "+preparacao.atendidos
-                +"\nNúmero de clientes na fila "+preparacao.fila.size();
+                +"\nTempo de simulação "+dados_prep[3]
+                +"\nNúmero de clientes atendidos "+dados_prep[4]
+                +"\nNúmero de clientes na fila "+dados_prep[5];
         
         this.dados_fix[0] = fixacao.soma_temp_esp / (fixacao.atendidos + fixacao.fila.size());
         this.dados_fix[1] = fixacao.soma_temp_esp / fixacao.soma_temp_esp / this.getInstante();
-        this.dados_fix[2] = fixacao.soma_temp_serv / this.getInstante();
+        this.dados_fix[2] = fixacao.soma_temp_serv / this.getInstante() / fixacao.atendedores;
         this.dados_fix[3] = this.getInstante();
         this.dados_fix[4] = fixacao.atendidos;
         this.dados_fix[5] = fixacao.fila.size();
@@ -128,13 +127,13 @@ public class Simulador
         String result_fix = "\nTempo médio de espera "+dados_fix[0]
                 +"\nComp. médio da fila "+dados_fix[1]
                 +"\nUtilização do serviço "+dados_fix[2]
-                +"\nTempo de simulação "+this.getInstante()
-                +"\nNúmero de clientes atendidos "+fixacao.atendidos
-                +"\nNúmero de clientes na fila "+fixacao.fila.size();
+                +"\nTempo de simulação "+dados_fix[3]
+                +"\nNúmero de clientes atendidos "+dados_fix[4]
+                +"\nNúmero de clientes na fila "+dados_fix[5];
         
         this.dados_test[0] = teste.soma_temp_esp / (teste.atendidos + teste.fila.size());
         this.dados_test[1] = teste.soma_temp_esp / teste.soma_temp_esp / this.getInstante();
-        this.dados_test[2] = teste.soma_temp_serv / this.getInstante();
+        this.dados_test[2] = teste.soma_temp_serv / this.getInstante() / teste.atendedores;
         this.dados_test[3] = this.getInstante();
         this.dados_test[4] = teste.atendidos;
         this.dados_test[5] = teste.fila.size();
@@ -142,9 +141,9 @@ public class Simulador
         String result_test = "\nTempo médio de espera "+dados_test[0]
                 +"\nComp. médio da fila "+dados_test[1]
                 +"\nUtilização do serviço "+dados_test[2]
-                +"\nTempo de simulação "+this.getInstante()
-                +"\nNúmero de clientes atendidos "+teste.atendidos
-                +"\nNúmero de clientes na fila "+teste.fila.size();
+                +"\nTempo de simulação "+dados_test[3]
+                +"\nNúmero de clientes atendidos "+dados_test[4]
+                +"\nNúmero de clientes na fila "+dados_test[5];
         
         String final_text = "\n------- Resultados preparacao -------\n"
                 +result_prep

@@ -11,7 +11,7 @@ public class Servico {
     public Vector<Cliente> fila; // Fila de espera do serviço
     private Simulador s; // Referência para o simulador a que pertence o serviço
     private int servico;
-    private int atendedores;
+    public int atendedores;
     public double media;
     public double desvio;
     private int seed;

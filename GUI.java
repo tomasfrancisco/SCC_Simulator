@@ -549,13 +549,7 @@ public class GUI extends javax.swing.JFrame {
 
                 // põe-o em marcha
                 s.executa();
-
-                String[] info = new String[2];
-                
-
-                this.counter++;
-                info[1] = ""+this.counter;
-
+                s.relat();
                 
                 temp_med_fila_prep += this.s.dados_prep[0];
                 comp_med_fila_prep += this.s.dados_prep[1];
