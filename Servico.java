@@ -6,14 +6,14 @@ import java.util.*;
 
 public class Servico {
     private int estado; // Variável que regista o estado do serviço: 0 - livre; 1 - ocupado
-    private int atendidos; // Número de clientes atendidos até ao momento
-    private double temp_ult, soma_temp_esp, soma_temp_serv; // Variáveis para cálculos estatísticos
-    private Vector<Cliente> fila; // Fila de espera do serviço
+    public int atendidos; // Número de clientes atendidos até ao momento
+    public double temp_ult, soma_temp_esp, soma_temp_serv; // Variáveis para cálculos estatísticos
+    public Vector<Cliente> fila; // Fila de espera do serviço
     private Simulador s; // Referência para o simulador a que pertence o serviço
     private int servico;
-    private int atendedores;
-    private double media;
-    private double desvio;
+    public int atendedores;
+    public double media;
+    public double desvio;
     private int seed;
     private int nextRand;
     private double[] randNum = new double[2];
