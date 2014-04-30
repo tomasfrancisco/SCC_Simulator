@@ -75,6 +75,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         media_cheg = new javax.swing.JTextField();
         replicas = new javax.swing.JCheckBox();
+        num_replicas = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -389,6 +390,13 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        num_replicas.setText("3");
+        num_replicas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                num_replicasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -406,13 +414,13 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(tSimulacao, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel22)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Simular, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(57, 57, 57)
-                                .addComponent(replicas))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addComponent(Simular, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(replicas)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(num_replicas, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -424,23 +432,19 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel18)
-                                .addComponent(Simular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(tSimulacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel22))
-                            .addComponent(media_cheg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel18)
+                        .addComponent(Simular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tSimulacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel22)
                         .addComponent(replicas, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)))
+                        .addComponent(num_replicas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(media_cheg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -462,7 +466,7 @@ public class GUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 361, Short.MAX_VALUE)
+            .addGap(0, 362, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -502,88 +506,159 @@ public class GUI extends javax.swing.JFrame {
         int atend_fix = Integer.parseInt(this.atend_fix.getText());
         int atend_test = Integer.parseInt(this.atend_test.getText());
         int tSimulacao = Integer.parseInt(this.tSimulacao.getText());
+        double temp_med_fila_prep = 0;
+        double comp_med_fila_prep = 0;
+        double utilizacao_serv_prep = 0;
+        double instante_prep = 0;
+        double atendidos_prep = 0;
+        double fila_prep = 0;
+        
+        double temp_med_fila_fix = 0;
+        double comp_med_fila_fix = 0;
+        double utilizacao_serv_fix = 0;
+        double instante_fix = 0;
+        double atendidos_fix = 0;
+        double fila_fix = 0;
+        
+        double temp_med_fila_test = 0;
+        double comp_med_fila_test = 0;
+        double utilizacao_serv_test = 0;
+        double instante_test = 0;
+        double atendidos_test = 0;
+        double fila_test = 0;
+        
         
         if(!this.replicas.isSelected() && this.first == true)
-        {        
-            // Cria um simulador e
-            this.s = new Simulador(media_cheg, media_prep, desvio_prep, seed_prep, atend_prep, media_fix, desvio_fix, seed_fix, atend_fix, media_test, desvio_test, seed_test, atend_test, tSimulacao);
-
-            // põe-o em marcha
-            s.executa();
-
-            String[] info = new String[2];
-            info[0] = s.relat();
-
-            this.counter++;
-            info[1] = ""+this.counter;
-
-            Result.main(info);
+        {  
+            this.counter = 0;
+            this.novaSimulacao(media_cheg, media_prep, desvio_prep, seed_prep, atend_prep, media_fix, desvio_fix, seed_fix, atend_fix, media_test, desvio_test, seed_test, atend_test, tSimulacao);
             this.first = false;
             return;
         }
         if(!this.replicas.isSelected() && this.first == false)
         {
-            // Cria um simulador e
-            this.s = new Simulador(media_cheg, media_prep, desvio_prep, seed_prep, atend_prep, media_fix, desvio_fix, seed_fix, atend_fix, media_test, desvio_test, seed_test, atend_test, tSimulacao);
-
-            // põe-o em marcha
-            s.executa();
-
-            String[] info = new String[2];
-            info[0] = s.relat();
-
-            this.counter++;
-            info[1] = ""+this.counter;
-
-            Result.main(info);
+            this.novaSimulacao(media_cheg, media_prep, desvio_prep, seed_prep, atend_prep, media_fix, desvio_fix, seed_fix, atend_fix, media_test, desvio_test, seed_test, atend_test, tSimulacao);
         }
         else
         {
-            // Cria um simulador e
-            this.s = new Simulador(media_cheg, media_prep, desvio_prep, seed_prep, atend_prep, media_fix, desvio_fix, seed_fix, atend_fix, media_test, desvio_test, seed_test, atend_test, tSimulacao);
+            int simulacoes = Integer.parseInt(this.num_replicas.getText());
+            for(int i = 0; i < simulacoes; i++)
+            {
+                // Cria um simulador e
+                this.s = new Simulador(media_cheg, media_prep, desvio_prep, seed_prep, atend_prep, media_fix, desvio_fix, seed_fix, atend_fix, media_test, desvio_test, seed_test, atend_test, tSimulacao);
 
-            // põe-o em marcha
-            s.executa();
+                // põe-o em marcha
+                s.executa();
 
+                String[] info = new String[2];
+                
+
+                this.counter++;
+                info[1] = ""+this.counter;
+
+                
+                temp_med_fila_prep += this.s.dados_prep[0];
+                comp_med_fila_prep += this.s.dados_prep[1];
+                utilizacao_serv_prep += this.s.dados_prep[2];
+                instante_prep += this.s.dados_prep[3];
+                atendidos_prep += this.s.dados_prep[4];
+                fila_prep += this.s.dados_prep[5];
+                
+                
+                temp_med_fila_fix += this.s.dados_fix[0];
+                comp_med_fila_fix += this.s.dados_fix[1];
+                utilizacao_serv_fix += this.s.dados_fix[2];
+                instante_fix += this.s.dados_fix[3];
+                atendidos_fix += this.s.dados_fix[4];
+                fila_fix += this.s.dados_fix[5];
+                
+                temp_med_fila_test += this.s.dados_test[0];
+                comp_med_fila_test += this.s.dados_test[1];
+                utilizacao_serv_test += this.s.dados_test[2];
+                instante_test += this.s.dados_test[3];
+                atendidos_test += this.s.dados_test[4];
+                fila_test += this.s.dados_test[5];
+            }
+            
+            temp_med_fila_prep /= simulacoes;
+            comp_med_fila_prep /= simulacoes;
+            utilizacao_serv_prep /= simulacoes;
+            instante_prep /= simulacoes;
+            atend_prep /= simulacoes;
+            fila_prep /= simulacoes;
+
+            temp_med_fila_fix /= simulacoes;
+            comp_med_fila_fix /= simulacoes;
+            utilizacao_serv_fix /= simulacoes;
+            instante_fix /= simulacoes;
+            atend_fix /= simulacoes;
+            fila_fix /= simulacoes;
+
+            temp_med_fila_test /= simulacoes;
+            comp_med_fila_test /= simulacoes;
+            utilizacao_serv_test /= simulacoes;
+            instante_test /= simulacoes;
+            atend_test /= simulacoes;
+            fila_test /= simulacoes;
+            
+            String result_prep = "\nTempo médio de espera "+temp_med_fila_prep
+                +"\nComp. médio da fila "+comp_med_fila_prep
+                +"\nUtilização do serviço "+utilizacao_serv_prep
+                +"\nTempo de simulação "+instante_prep
+                +"\nNúmero de clientes atendidos "+atendidos_prep
+                +"\nNúmero de clientes na fila "+fila_prep;
+            
+            String result_fix = "\nTempo médio de espera "+temp_med_fila_fix
+                +"\nComp. médio da fila "+comp_med_fila_fix
+                +"\nUtilização do serviço "+utilizacao_serv_fix
+                +"\nTempo de simulação "+instante_fix
+                +"\nNúmero de clientes atendidos "+atendidos_fix
+                +"\nNúmero de clientes na fila "+fila_fix;
+            
+            String result_test = "\nTempo médio de espera "+temp_med_fila_test
+                +"\nComp. médio da fila "+comp_med_fila_test
+                +"\nUtilização do serviço "+utilizacao_serv_test
+                +"\nTempo de simulação "+instante_test
+                +"\nNúmero de clientes atendidos "+atendidos_test
+                +"\nNúmero de clientes na fila "+fila_test;
+            
+            String final_text = "\n------- Resultados preparacao -------\n"
+                +result_prep
+                +"\n------- Resultados fixacao -------\n"
+                +result_fix
+                +"\n------- Resultados teste -------\n"
+                +result_test;           
+            
+            
             String[] info = new String[2];
-            info[0] = s.relat();
-
-            this.counter++;
-            info[1] = ""+this.counter;
-
+            info[0] = final_text;
+            
+            info[1] = ""+simulacoes;
+                    
             Result.main(info);
             
-            // Cria um simulador e
-            this.s = new Simulador(media_cheg, media_prep, desvio_prep, seed_prep, atend_prep, media_fix, desvio_fix, seed_fix, atend_fix, media_test, desvio_test, seed_test, atend_test, tSimulacao);
-
-            // põe-o em marcha
-            s.executa();
-
-            info = new String[2];
-            info[0] = s.relat();
-
-            this.counter++;
-            info[1] = ""+this.counter;
-
-            Result.main(info);
-                      
-            // Cria um simulador e
-            this.s = new Simulador(media_cheg, media_prep, desvio_prep, seed_prep, atend_prep, media_fix, desvio_fix, seed_fix, atend_fix, media_test, desvio_test, seed_test, atend_test, tSimulacao);
-
-            // põe-o em marcha
-            s.executa();
-
-            info = new String[2];
-            info[0] = s.relat();
-
-            this.counter++;
-            info[1] = ""+this.counter;
-
-            Result.main(info);
             this.first = true;            
         }
     }//GEN-LAST:event_SimularActionPerformed
 
+    private void novaSimulacao(double media_cheg, double media_prep, double desvio_prep, int seed_prep, int atend_prep, double media_fix, double desvio_fix, int seed_fix, int atend_fix, double media_test, double desvio_test, int seed_test, int atend_test, int tSimulacao)
+    {
+        // Cria um simulador e
+        this.s = new Simulador(media_cheg, media_prep, desvio_prep, seed_prep, atend_prep, media_fix, desvio_fix, seed_fix, atend_fix, media_test, desvio_test, seed_test, atend_test, tSimulacao);
+
+        // põe-o em marcha
+        s.executa();
+
+        String[] info = new String[2];
+        info[0] = s.relat();
+
+        this.counter++;
+        info[1] = ""+this.counter;
+
+
+        Result.main(info);
+    }
+    
     private void desvio_testActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desvio_testActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_desvio_testActionPerformed
@@ -611,6 +686,10 @@ public class GUI extends javax.swing.JFrame {
     private void replicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_replicasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_replicasActionPerformed
+
+    private void num_replicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num_replicasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_num_replicasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -682,6 +761,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField media_fix;
     private javax.swing.JTextField media_prep;
     private javax.swing.JTextField media_test;
+    private javax.swing.JTextField num_replicas;
     private javax.swing.JCheckBox replicas;
     private javax.swing.JSlider seed_fix;
     private javax.swing.JLabel seed_fix_label;
